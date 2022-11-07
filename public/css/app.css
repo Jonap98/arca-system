@@ -4,9 +4,10 @@ body {
 }
 
 #side_nav {
-    background: #2596BE;
+    background: #10375f;
     min-width: 250px;
     max-width: 250px;
+    transition: all 0.3s;
 }
 
 .content {
@@ -20,7 +21,7 @@ hr.h-color {
 
 .sidebar li.active {
     background: #eee;
-    border-radius: 8px;
+    border-radius: 5px;
 }
 
 .sidebar li.active a, .sidebar li.active a:hover {
@@ -29,4 +30,17 @@ hr.h-color {
 
 .sidebar li a {
     color: #fff;
+}
+
+@media(max-width: 767px) {
+    #side_nav {
+        margin-left: -250px;
+        position: fixed;
+        min-height: 100vh;
+        z-index: 1;
+    }
+
+    #side_nav.active {
+        margin-left: 0;        
+    }
 }
