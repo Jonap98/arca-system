@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEliminarPais" tabindex="-1" aria-labelledby="modalEliminarPais" aria-hidden="true">
+<div class="modal fade" id="modalEliminarPais{{ $pais->id }}" tabindex="-1" aria-labelledby="modalEliminarPais" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="#" method="POST">
@@ -10,7 +10,7 @@
                 <div class="modal-body">
 
                     <div class="m-2">
-                        <span>¿Seguro que desea eliminar el país <b>País</b>?</span>
+                        <span>¿Seguro que desea eliminar el país <b>{{ $pais->pais }}</b>?</span>
                     </div>
                     
                 </div>

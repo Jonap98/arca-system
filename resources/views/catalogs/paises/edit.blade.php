@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEditarPais" tabindex="-1" aria-labelledby="modalEditarPais" aria-hidden="true">
+<div class="modal fade" id="modalEditarPais{{ $pais->id }}" tabindex="-1" aria-labelledby="modalEditarPais" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="#" method="POST">
@@ -11,7 +11,7 @@
 
                     <div class="m-2">
                         <label>País</label>
-                        <input type="text" name="nombre" class="form-control">
+                        <input type="text" name="nombre" class="form-control" value="{{ $pais->pais }}">
                     </div>
                     
                 </div>

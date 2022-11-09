@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEditarCategoria" tabindex="-1" aria-labelledby="modalEditarCategoria" aria-hidden="true">
+<div class="modal fade" id="modalEditarCategoria{{ $categoria->id }}" tabindex="-1" aria-labelledby="modalEditarCategoria" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="#" method="POST">
@@ -11,7 +11,7 @@
 
                     <div class="m-2">
                         <label>Categoría</label>
-                        <input type="text" name="nombre" class="form-control">
+                        <input type="text" name="nombre" class="form-control" value="{{ $categoria->nombre }}">
                     </div>
                     
                 </div>

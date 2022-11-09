@@ -19,45 +19,44 @@
             <div class="m-4">
                 <div class="row">
                     <div class="card col-md-12">
+                        @if (session('success'))
+                            <div class="alert alert-primary mt-2" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if (session('error'))
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <div class="mt-2 table-responsive">
                             <table id="categoriasEmpleado" class="table table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th scope="col">Uno</th>
-                                        <th scope="col">Dos</th>
-                                        <th scope="col">Tres</th>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Categoría de empleado</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Uno</td>
-                                        <td>cuatro</td>
-                                        <td>Tres</td>
-                                        <td>
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarCategoria">
-                                                Editar
-                                            </button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarCategoria">
-                                                Eliminar
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Uno</td>
-                                        <td>Dos</td>
-                                        <td>Tres</td>
-                                        <td>
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarCategoria">
-                                                Editar
-                                            </button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarCategoria">
-                                                Eliminar
-                                            </button>
-                                        </td>
-                                    </tr>
-                                @include('catalogs.categorias_empleado.edit')
-                                @include('catalogs.categorias_empleado.delete')
+                                    @foreach ($categorias as $categoria)
+                                        <tr>
+                                            <td>{{ $categoria->id }}</td>
+                                            <td>{{ $categoria->tipo_empleado }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarCategoria{{ $categoria->id }}">
+                                                    Editar
+                                                </button>
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarCategoria{{ $categoria->id }}">
+                                                    Eliminar
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        @include('catalogs.categorias_empleado.edit')
+                                        @include('catalogs.categorias_empleado.delete')
+                                    @endforeach
+                                    
                                 </tbody>
                             </table>
                         </div>

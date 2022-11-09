@@ -10,9 +10,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="d-flex justify-content-between m-3">
-                <h3>Paises</h3>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrearPais">
-                    Crear país
+                <h3>Plantas</h3>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrearPlanta">
+                    Crear planta
                 </button>
             </div>
             <hr class="mx-3">
@@ -31,38 +31,38 @@
                     @endif
                     <div class="card col-md-12">
                         <div class="mt-2 table-responsive">
-                            <table id="paises" class="table table-striped">
+                            <table id="plantas" class="table table-striped">
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">Id</th>
-                                        <th scope="col">País</th>
+                                        <th scope="col">Planta</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($paises as $pais)
+                                    @foreach ($plantas as $planta)
                                         <tr>
-                                            <td>{{ $pais->id }}</td>
-                                            <td>{{ $pais->pais }}</td>
+                                            <td>{{ $planta->id }}</td>
+                                            <td>{{ $planta->planta }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarPais{{ $pais->id }}">
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarPlanta{{ $planta->id }}">
                                                     Editar
                                                 </button>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarPais{{ $pais->id }}">
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarPlanta{{ $planta->id }}">
                                                     Eliminar
                                                 </button>
                                             </td>
                                         </tr>
                                         
-                                    @include('catalogs.paises.edit')
-                                    @include('catalogs.paises.delete')
+                                    @include('catalogs.plantas.edit')
+                                    @include('catalogs.plantas.delete')
                                     
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
 
-                        @include('catalogs.paises.create')
+                        @include('catalogs.plantas.create')
 
                     </div>
                 </div>
@@ -81,7 +81,7 @@
 
     <script>
         $(document).ready(function () {
-            $('#paises').DataTable({
+            $('#plantas').DataTable({
                 order: [0, 'desc']
             });
         });

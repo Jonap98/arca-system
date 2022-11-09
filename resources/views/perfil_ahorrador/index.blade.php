@@ -10,14 +10,15 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="d-flex justify-content-between m-3">
-                <h3>Paises</h3>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrearPais">
-                    Crear país
-                </button>
+                <h3>Perfil ahorrador</h3>
+                <a href="{{ route('perfil-ahorrador.create') }}" class="btn btn-primary">
+                    Crear perfil ahorrador
+                </a>
             </div>
             <hr class="mx-3">
             <div class="m-4">
                 <div class="row">
+
                     @if (session('success'))
                         <div class="alert alert-primary mt-2" role="alert">
                             {{ session('success') }}
@@ -29,40 +30,46 @@
                             {{ session('error') }}
                         </div>
                     @endif
+
                     <div class="card col-md-12">
+
                         <div class="mt-2 table-responsive">
-                            <table id="paises" class="table table-striped">
+                            <table id="estatusEmpresa" class="table table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">País</th>
+                                        <th scope="col">GMIN</th>
+                                        <th scope="col">Apellido P</th>
+                                        <th scope="col">Apellido M</th>
+                                        <th scope="col">Nombres</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($paises as $pais)
+                                    @foreach ($perfiles as $perfil)
                                         <tr>
-                                            <td>{{ $pais->id }}</td>
-                                            <td>{{ $pais->pais }}</td>
+                                            <td>{{ $perfil->gmin }}</td>
+                                            <td>{{ $perfil->paterno }}</td>
+                                            <td>{{ $perfil->materno }}</td>
+                                            <td>{{ $perfil->nombres }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarPais{{ $pais->id }}">
+                                                {{-- <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarPerfil{{ $perfil->gmin }}">
                                                     Editar
-                                                </button>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarPais{{ $pais->id }}">
+                                                </button> --}}
+                                                <a href="{{ route('perfil-ahorrador.details', $perfil->gmin ) }}" class="btn btn-success">Detalles</a>
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarPerfil{{ $perfil->gmin }}">
                                                     Eliminar
                                                 </button>
                                             </td>
                                         </tr>
-                                        
-                                    @include('catalogs.paises.edit')
-                                    @include('catalogs.paises.delete')
-                                    
+                                        @include('perfil_ahorrador.delete')
                                     @endforeach
+                                    
+                                {{-- @include('perfil_ahorrador.edit') --}}
+
                                 </tbody>
                             </table>
                         </div>
 
-                        @include('catalogs.paises.create')
 
                     </div>
                 </div>
@@ -81,7 +88,7 @@
 
     <script>
         $(document).ready(function () {
-            $('#paises').DataTable({
+            $('#estatusEmpresa').DataTable({
                 order: [0, 'desc']
             });
         });

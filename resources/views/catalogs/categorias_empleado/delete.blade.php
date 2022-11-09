@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEliminarCategoria" tabindex="-1" aria-labelledby="modalEliminarCategoria" aria-hidden="true">
+<div class="modal fade" id="modalEliminarCategoria{{ $categoria->id }}" tabindex="-1" aria-labelledby="modalEliminarCategoria" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="#" method="POST">
@@ -10,7 +10,7 @@
                 <div class="modal-body">
 
                     <div class="m-2">
-                        <span>¿Seguro que desea eliminar la categoría <b>Categoría</b>?</span>
+                        <span>¿Seguro que desea eliminar la categoría <b>{{ $categoria->nombre }}</b>?</span>
                     </div>
                     
                 </div>

@@ -1,7 +1,7 @@
 <div class="modal fade" id="modalCrearCategoria" tabindex="-1" aria-labelledby="modalCrearCategoria" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="#" method="POST">
+            <form action="{{ route('categorias-empleado.store') }}" method="POST">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCrearCategoria">Crear categoría de empleado</h5>
