@@ -23,7 +23,7 @@
                                 <label for="gmin" class="col-md-4 col-form-label text-md-end">{{ __('Gmin') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="gmin" type="text" class="form-control @error('gmin') is-invalid @enderror" name="gmin" value="{{ old('gmin') }}" required autofocus>
+                                    <input id="gmin" type="text" class="form-control @error('gmin') is-invalid @enderror" name="gmin" value="{{ old('gmin') }}" autofocus>
 
                                     @error('gmin')
                                         <span class="invalid-feedback" role="alert">

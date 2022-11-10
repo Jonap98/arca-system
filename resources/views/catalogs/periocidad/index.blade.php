@@ -18,46 +18,44 @@
             <hr class="mx-3">
             <div class="m-4">
                 <div class="row">
+                    @if (session('success'))
+                        <div class="alert alert-primary mt-2" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="alert alert-danger mt-2" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <div class="card col-md-12">
                         <div class="mt-2 table-responsive">
                             <table id="periocidad" class="table table-striped">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th scope="col">Uno</th>
-                                        <th scope="col">Dos</th>
-                                        <th scope="col">Tres</th>
+                                        <th scope="col">Días</th>
+                                        <th scope="col">Periodo</th>
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Uno</td>
-                                        <td>cuatro</td>
-                                        <td>Tres</td>
-                                        <td>
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarPeriocidad">
-                                                Editar
-                                            </button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarPeriocidad">
-                                                Eliminar
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Uno</td>
-                                        <td>Dos</td>
-                                        <td>Tres</td>
-                                        <td>
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarPeriocidad">
-                                                Editar
-                                            </button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarPeriocidad">
-                                                Eliminar
-                                            </button>
-                                        </td>
-                                    </tr>
-                                @include('catalogs.periocidad.edit')
-                                @include('catalogs.periocidad.delete')
+                                    @foreach ($periodos as $periodo)
+                                        <tr>
+                                            <td>{{ $periodo->dias }}</td>
+                                            <td>{{ $periodo->periodo }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditarPeriocidad{{ $periodo->id }}">
+                                                    Editar
+                                                </button>
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminarPeriocidad{{ $periodo->id }}">
+                                                    Eliminar
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        @include('catalogs.periocidad.edit')
+                                        @include('catalogs.periocidad.delete')
+                                    @endforeach
 
                                 </tbody>
                             </table>

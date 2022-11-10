@@ -34,25 +34,27 @@
             <ul class="list-unstyled px-2">
 
 
-                <li class="id-1" class="btn dropdown">
-                    <a href="#" class="text-decoration-none px-3 py-2 d-block dropdown-toggle" id="dropdownCatalogos" data-bs-toggle="dropdown" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-collection-fill" viewBox="0 0 16 16">
-                            <path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
-                          </svg>
-                        Catálogos
-                    </a>
-                    <ul class="p-2 dropdown-menu" aria-labelledby="dropdownCatalogos">
-                      <li><a class="dropdown-item" href="{{ route('estatus-empresa') }}">Estatus empresa</a></li>
-                      <li><a class="dropdown-item" href="{{ route('categorias-empleado') }}">Categorías empleado</a></li>
-                      <li><a class="dropdown-item" href="{{ route('tipo-identificacion') }}">Tipo identificación</a></li>
-                      <li><a class="dropdown-item" href="{{ route('paises') }}">Paises</a></li>
-                      <li><a class="dropdown-item" href="{{ route('ocupaciones') }}">Ocupaciones</a></li>
-                      <li><a class="dropdown-item" href="{{ route('parentescos') }}">Parentescos</a></li>
-                      <li><a class="dropdown-item" href="{{ route('periocidades') }}">Periocidad</a></li>
-                      <li><a class="dropdown-item" href="{{ route('tipo-prestamo') }}">Tipo de prestamo</a></li>
-                      <li><a class="dropdown-item" href="{{ route('plantas') }}">Plantas</a></li>
-                    </ul>
-                </li>
+                @role('arca')
+                    <li class="id-1" class="btn dropdown">
+                        <a href="#" class="text-decoration-none px-3 py-2 d-block dropdown-toggle" id="dropdownCatalogos" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-collection-fill" viewBox="0 0 16 16">
+                                <path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
+                            </svg>
+                            Catálogos
+                        </a>
+                        <ul class="p-2 dropdown-menu" aria-labelledby="dropdownCatalogos">
+                            <li><a class="dropdown-item" href="{{ route('estatus-empresa') }}">Estatus empresa</a></li>
+                            <li><a class="dropdown-item" href="{{ route('categorias-empleado') }}">Categorías empleado</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tipo-identificacion') }}">Tipo identificación</a></li>
+                            <li><a class="dropdown-item" href="{{ route('paises') }}">Paises</a></li>
+                            <li><a class="dropdown-item" href="{{ route('ocupaciones') }}">Ocupaciones</a></li>
+                            <li><a class="dropdown-item" href="{{ route('parentescos') }}">Parentescos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('periocidades') }}">Periocidad</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tipo-prestamo') }}">Tipo de prestamo</a></li>
+                            <li><a class="dropdown-item" href="{{ route('plantas') }}">Plantas</a></li>
+                        </ul>
+                    </li>
+                @endrole
 
                 <li class="id-2" class="btn">
                     <a href="{{ route('perfil-ahorrador') }}" class="text-decoration-none px-3 py-2 d-block">
@@ -70,6 +72,16 @@
                             <path d="M16 6.5h-5.551a2.678 2.678 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5c-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6z"/>
                         </svg>
                         Ahorro
+                    </a>
+                </li>
+
+                <li class="id-3" class="btn">
+                    <a href="{{ route('solicitud-prestamo') }}" class="text-decoration-none px-3 py-2 d-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet-fill" viewBox="0 0 16 16">
+                            <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                            <path d="M16 6.5h-5.551a2.678 2.678 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5c-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6z"/>
+                        </svg>
+                        Solicitud de préstamo
                     </a>
                 </li>
                 

@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEditarPrestamo" tabindex="-1" aria-labelledby="modalEditarPrestamo" aria-hidden="true">
+<div class="modal fade" id="modalEditarPrestamo{{ $tipo->id }}" tabindex="-1" aria-labelledby="modalEditarPrestamo" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="#" method="POST">
@@ -11,23 +11,26 @@
 
                     <div class="m-2">
                         <label>Tipo de préstamo</label>
-                        <input type="text" name="nombre" class="form-control">
+                        <input type="text" name="tipo_prestamo" class="form-control" value="{{ $tipo->tipo_prestamo }}">
                     </div>
 
                     <div class="m-2">
                         <label>Tasa de interés</label>
-                        <input type="text" name="tasa" class="form-control">
+                        <input type="text" name="tasa_interes" class="form-control" value="{{ $tipo->tasa_interes }}">
                     </div>
 
                     <div class="m-2">
                         <label>Unidad máxima de pago</label>
-                        <input type="text" name="unidad" class="form-control">
+                        <input type="text" name="unidad_maxima" class="form-control" value="{{ $tipo->unidad_maxima_pago }}">
                     </div>
 
                     <div class="m-2">
                         <label>Periocidad</label>
-                        {{-- Debe ser un select --}}
-                        <input type="text" name="periocidad" class="form-control">
+                        <select name="periodo" id="periocidad" class="form-select">
+                            @foreach ($periodos as $periodo)
+                                <option value="{{ $periodo->id }}" {{ ($periodo->id == $tipo->id) ? 'selected' : '' }} >{{ $tipo->periodo }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     
                 </div>

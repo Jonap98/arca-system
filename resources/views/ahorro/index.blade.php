@@ -12,9 +12,9 @@
         <div class="col-md-12">
             <div class="d-flex justify-content-between m-3">
                 <h3>Solicitudes de ahorro</h3>
-                <a href="{{ route('perfil-ahorrador.create') }}" class="btn btn-primary">
-                    Crear perfil ahorrador
-                </a>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarMonto">
+                    Solicitar ahorro
+                </button>
             </div>
             <hr class="mx-3">
             <div class="m-4">
@@ -81,6 +81,8 @@
                                         </tr>
                                         @include('ahorro.autorizar')
                                         @include('ahorro.rechazar')
+                                        {{-- @include('ahorro.detalles_ahorro.edit') --}}
+
                                     @endforeach
                                     {{-- <tr>
                                         <td> dummie</td>

@@ -14,6 +14,8 @@ use App\Http\Controllers\catalogs\PlantasController;
 use App\Http\Controllers\PerfilAhorradorController;
 use App\Http\Controllers\AhorroController;
 use App\Http\Controllers\DetallesAhorroController;
+use App\Http\Controllers\SolicitudPrestamoController;
+
 
 
 
@@ -46,9 +48,11 @@ Route::group(['middleware' => ['auth']], function() {
     
     // Periocidad
     Route::get('periocidades', [PeriocidadController::class, 'index'])->name('periocidades');
+    Route::post('periocidades/store', [PeriocidadController::class, 'store'])->name('periocidades.store');
     
     // Tipo de préstamo
     Route::get('tipo-prestamo', [TipoPrestamoController::class, 'index'])->name('tipo-prestamo');
+    Route::post('tipo-prestamo/store', [TipoPrestamoController::class, 'store'])->name('tipo-prestamo.store');
     
     // Tipo de identificación
     Route::get('tipo-identificacion', [TipoIdentificacionController::class, 'index'])->name('tipo-identificacion');
@@ -82,6 +86,13 @@ Route::group(['middleware' => ['auth']], function() {
     
     // Detalles ahorro
     Route::get('detalles-ahorro/{gmin}', [DetallesAhorroController::class, 'detalles'])->name('detalles-ahorro');
+
+
+    // ==================================================
+    // Prestamo
+    // ==================================================
+    // Solicitud de préstamo
+    Route::get('solicitud-de-prestamo', [SolicitudPrestamoController::class, 'index'])->name('solicitud-prestamo');
 
 });
 

@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEliminarPeriocidad" tabindex="-1" aria-labelledby="modalEliminarPeriocidad" aria-hidden="true">
+<div class="modal fade" id="modalEliminarPeriocidad{{ $periodo->id }}" tabindex="-1" aria-labelledby="modalEliminarPeriocidad" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="#" method="POST">
@@ -10,7 +10,7 @@
                 <div class="modal-body">
 
                     <div class="m-2">
-                        <span>¿Seguro que desea eliminar el periodo <b>Periocidad</b>?</span>
+                        <span>¿Seguro que desea eliminar el periodo <b>{{ $periodo->periodo }}</b>?</span>
                     </div>
                     
                 </div>

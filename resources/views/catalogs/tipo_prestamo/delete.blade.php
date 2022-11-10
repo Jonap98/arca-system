@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEliminarPrestamo" tabindex="-1" aria-labelledby="modalEliminarPrestamo" aria-hidden="true">
+<div class="modal fade" id="modalEliminarPrestamo{{ $tipo->id }}" tabindex="-1" aria-labelledby="modalEliminarPrestamo" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="#" method="POST">

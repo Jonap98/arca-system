@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEditarPeriocidad" tabindex="-1" aria-labelledby="modalEditarPeriocidad" aria-hidden="true">
+<div class="modal fade" id="modalEditarPeriocidad{{ $periodo->id }}" tabindex="-1" aria-labelledby="modalEditarPeriocidad" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="#" method="POST">
@@ -11,12 +11,12 @@
 
                     <div class="m-2">
                         <label>Periodo</label>
-                        <input type="text" name="nombre" class="form-control">
+                        <input type="text" name="nombre" class="form-control" value="{{ $periodo->periodo }}">
                     </div>
 
                     <div class="m-2">
                         <label>Días</label>
-                        <input type="text" name="dias" class="form-control">
+                        <input type="text" name="dias" class="form-control" value="{{ $periodo->dias }}">
                     </div>
                     
                 </div>

@@ -1,7 +1,7 @@
 <div class="modal fade" id="modalCrearPeriocidad" tabindex="-1" aria-labelledby="modalCrearPeriocidad" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="#" method="POST">
+            <form action="{{ route('periocidades.store') }}" method="POST">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCrearPeriocidad">Crear periocidad</h5>
@@ -16,7 +16,7 @@
 
                     <div class="m-2">
                         <label>Días</label>
-                        <input type="text" name="dias" class="form-control">
+                        <input type="number" name="dias" class="form-control">
                     </div>
                     
                 </div>
