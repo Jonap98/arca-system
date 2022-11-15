@@ -11,9 +11,11 @@
         <div class="col-md-12">
             <div class="d-flex justify-content-between m-3">
                 <h3>Perfil ahorrador</h3>
+                @role('arca')
                 <a href="{{ route('perfil-ahorrador.create') }}" class="btn btn-primary">
                     Crear perfil ahorrador
                 </a>
+                @endrole
                 {{-- <button type="button" class="btn btn-primary">
                     Crear perfil ahorrador
                 </button> --}}
@@ -24,9 +26,12 @@
                 <div class="row">
                     <div class="card col-md-12 p-4">
                         <div class="container-fluid">
-
-                            <img src="{{ asset('storage/images/'.$perfil->foto) }}" alt="" height="250px" class="rounded">
                             {{-- <img src="{{ asset('assets/jona.jpg') }}" alt="" height="250px" class="rounded"> --}}
+
+                            <img src="{{ Storage::url($perfil->foto) }}" alt="" height="250px" class="rounded">
+                            {{-- <img src="{{ asset('assets/jona.jpg') }}" alt="" height="250px" class="rounded"> --}}
+                            {{-- <img src="/storage/{{ Storage::url($perfil->foto) }}" alt="" height="250px" class="rounded"> --}}
+                            {{-- <img src="{{ asset('storage/images/'.$perfil->foto) }}" alt="" height="250px" class="rounded"> --}}
     
                             {{-- <form action="{{ route('perfil-ahorrador.update', $perfil->gmin) }}" method="POST"> --}}
                             <form action="{{ route('perfil-ahorrador.update') }}" method="POST">

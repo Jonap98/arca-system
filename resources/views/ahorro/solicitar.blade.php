@@ -1,10 +1,10 @@
-<div class="modal fade" id="modalEditarMonto" tabindex="-1" aria-labelledby="modalEditarMonto" aria-hidden="true">
+<div class="modal fade" id="modalSolicitarAhorro" tabindex="-1" aria-labelledby="modalSolicitarAhorro" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{ route('ahorro.modify') }}" method="POST">
+            <form action="{{ route('ahorro.store') }}" method="POST">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalEditarMonto">Modificar monto semanal</h5>
+                    <h5 class="modal-title" id="modalSolicitarAhorro">Solicitar ahorro</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -13,14 +13,10 @@
                         <span>Monto semanal</span>
                         <input type="text" name="monto_semanal" class="form-control">
                     </div>
-                    <input type="hidden" name="folio" class="form-control" value="{{ $ahorro_semanal->folio }}">
 
                     <div class="m-2">
-                        <span>¿Seguro que desea solicitar la modificación del monto semanal?</span>
+                        <span>¿Seguro que desea solicitar ahorro?</span>
                     </div>
-                    <input type="hidden" name="folio" value="{{ $ahorro_semanal->folio }}">
-                    <input type="hidden" name="gmin_solicitante" value="{{ $ahorro_semanal->gmin_solicitante }}">
-                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

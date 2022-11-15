@@ -87,6 +87,9 @@ class PerfilAhorradorController extends Controller
     }
 
     public function store(Request $request) {
+        // dd($request);
+        // dd($request->file('imagen'));
+        // dd($request->file('imagen')->store('public/images'));
 
         Validator::make($request->all(), [
             'gmin' => 'unique:ahorrador',
@@ -135,49 +138,53 @@ class PerfilAhorradorController extends Controller
         $ahorrador->telefono_oficina = $request->telefono_oficina;
         $ahorrador->correo_empresa = $request->correo_empresa;
         $ahorrador->tipo_empleado = $request->tipo_empleado;
-        // $ahorrador->foto = $request->imagen;
+
+        if($request->hasFile('imagen')) {
+            $ahorrador->foto = $request->file('imagen')->store('public/images');
+        }
+        
         $ahorrador->status_empleado = $request->status;
 
 
-        if($request->imagen) {
-            $ahorrador->foto = $request->imagen->store('images');
-        }
+        // if($request->imagen) {
+        //     $ahorrador->foto = $request->imagen->store('public/images');
+        // }
     
-        $request->validate([
-            // 'gmin' => 'unique:ahorrador',
-            'imagen' => 'image|max:102400'
-        ]);
+        // $request->validate([
+        //     // 'gmin' => 'unique:ahorrador',
+        //     'imagen' => 'image|max:102400'
+        // ]);
 
-        if($request->hasFile('image')) {
-            $path = $request->file('images')->store('images');
-            // $path = Storage::disk('images')->put( 'imagen.jpg', file_get_contents($request->file('images')->getPathName()) );
+        // if($request->hasFile('image')) {
+        //     $path = $request->file('images')->store('images');
+        //     // $path = Storage::disk('images')->put( 'imagen.jpg', file_get_contents($request->file('images')->getPathName()) );
 
 
-            PerfilAhorrador::create([
-                'gmin' => $ahorrador->gmin,
-                'paterno' => $ahorrador->paterno,
-                'materno' => $ahorrador->materno,
-                'nombres' => $ahorrador->nombres,
-                'fecha_nacimiento' => $ahorrador->fecha_nacimiento,
-                'ciudad_nacimiento' => $ahorrador->ciudad_nacimiento,
-                'nacionalidad' => $ahorrador->nacionalidad,
-                'telefono' => $ahorrador->telefono,
-                'correo_personal' => $ahorrador->correo_personal,
-                'numero_identificacion' => $ahorrador->numero_identificacion,
-                'calle' => $ahorrador->calle,
-                'colonia' => $ahorrador->colonia,
-                'ciudad' => $ahorrador->ciudad,
-                'rfc' => $ahorrador->rfc,
-                'curp' => $ahorrador->curp,
-                'planta' => $ahorrador->planta,
-                'departamento' => $ahorrador->departamento,
-                'puesto' => $ahorrador->puesto,
-                'telefono_oficina' => $ahorrador->telefono_oficina,
-                'correo_empresa' => $ahorrador->correo_empresa,
-                'tipo_empleado' => $ahorrador->tipo_empleado,
-                'foto' => $path,
-            ]);
-        }
+        //     PerfilAhorrador::create([
+        //         'gmin' => $ahorrador->gmin,
+        //         'paterno' => $ahorrador->paterno,
+        //         'materno' => $ahorrador->materno,
+        //         'nombres' => $ahorrador->nombres,
+        //         'fecha_nacimiento' => $ahorrador->fecha_nacimiento,
+        //         'ciudad_nacimiento' => $ahorrador->ciudad_nacimiento,
+        //         'nacionalidad' => $ahorrador->nacionalidad,
+        //         'telefono' => $ahorrador->telefono,
+        //         'correo_personal' => $ahorrador->correo_personal,
+        //         'numero_identificacion' => $ahorrador->numero_identificacion,
+        //         'calle' => $ahorrador->calle,
+        //         'colonia' => $ahorrador->colonia,
+        //         'ciudad' => $ahorrador->ciudad,
+        //         'rfc' => $ahorrador->rfc,
+        //         'curp' => $ahorrador->curp,
+        //         'planta' => $ahorrador->planta,
+        //         'departamento' => $ahorrador->departamento,
+        //         'puesto' => $ahorrador->puesto,
+        //         'telefono_oficina' => $ahorrador->telefono_oficina,
+        //         'correo_empresa' => $ahorrador->correo_empresa,
+        //         'tipo_empleado' => $ahorrador->tipo_empleado,
+        //         'foto' => $path,
+        //     ]);
+        // }
 
         $ahorrador->save();
 

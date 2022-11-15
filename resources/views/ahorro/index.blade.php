@@ -12,9 +12,11 @@
         <div class="col-md-12">
             <div class="d-flex justify-content-between m-3">
                 <h3>Solicitudes de ahorro</h3>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarMonto">
+                @role('empleado')
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSolicitarAhorro">
                     Solicitar ahorro
                 </button>
+                @endrole
             </div>
             <hr class="mx-3">
             <div class="m-4">
@@ -33,6 +35,7 @@
                             </div>
                         @endforeach
                     @endif
+
                     <div class="card col-md-12">
                             
                             <div class="mt-2 table-responsive">
@@ -60,16 +63,18 @@
                                                       Acciones
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        {{-- <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#modalAjuste{{ $conteo->Id }}" onclick="enviarAccion({{ $conteo->Id }}, 'AjustePositivo')"> --}}
-                                                        <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#autorizarAhorro{{ $solicitud->gmin_solicitante }}">
-                                                            Autorizar
-                                                        </button>
-                                                        <button type="button" class="btn dropdown-item">
-                                                            Revisar
-                                                        </button>
-                                                        <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#rechazarAhorro{{ $solicitud->gmin_solicitante }}">
-                                                            Rechazar
-                                                        </button>
+                                                        @role('arca')
+                                                            {{-- <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#modalAjuste{{ $conteo->Id }}" onclick="enviarAccion({{ $conteo->Id }}, 'AjustePositivo')"> --}}
+                                                            <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#autorizarAhorro{{ $solicitud->id }}">
+                                                                Autorizar
+                                                            </button>
+                                                            <button type="button" class="btn dropdown-item">
+                                                                Revisar
+                                                            </button>
+                                                            <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#rechazarAhorro{{ $solicitud->id }}">
+                                                                Rechazar
+                                                            </button>
+                                                        @endrole
                                                         @if ($solicitud->status == 'AUTORIZADO')
                                                             <a href="{{ route('detalles-ahorro', $solicitud->gmin_solicitante) }}" class="btn btn-primary dropdown-item">
                                                                 Ver detalles de solicitud
@@ -97,8 +102,11 @@
                                 </table>
                             </div>
 
-    
+                            
+                            
                         </div>
+                        @include('ahorro.solicitar')
+
 
                     </div>
                 </div>

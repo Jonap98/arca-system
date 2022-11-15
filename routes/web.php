@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('ahorro', [AhorroController::class, 'index'])->name('ahorro');
     Route::post('ahorro/store', [AhorroController::class, 'store'])->name('ahorro.store');
     Route::post('ahorro/update', [AhorroController::class, 'update'])->name('ahorro.update');
+    Route::post('ahorro/modify', [AhorroController::class, 'modify'])->name('ahorro.modify');
     // Route::post('ahorro/rechazar', [AhorroController::class, 'update'])->name('ahorro.rechazar');
     
     // Detalles ahorro
@@ -93,6 +94,7 @@ Route::group(['middleware' => ['auth']], function() {
     // ==================================================
     // Solicitud de préstamo
     Route::get('solicitud-de-prestamo', [SolicitudPrestamoController::class, 'index'])->name('solicitud-prestamo');
+    Route::post('solicitud-de-prestamo/store', [SolicitudPrestamoController::class, 'store'])->name('solicitud-prestamo.store');
 
 });
 

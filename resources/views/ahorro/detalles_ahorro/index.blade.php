@@ -12,12 +12,11 @@
         <div class="col-md-12">
             <div class="d-flex justify-content-between m-3">
                 <h3>Detalles de ahorro</h3>
+                @role('empleado')
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarMonto">
-                    Solicitar cambio
+                    Modificar ahorro
                 </button>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditarMonto">
-                    Solicitar ahorro
-                </button>
+                @endrole
             </div>
             <hr class="mx-3">
             <div class="m-4">

@@ -1,4 +1,4 @@
-<div class="modal fade" id="autorizarAhorro{{ $solicitud->gmin_solicitante }}" tabindex="-1" aria-labelledby="autorizarAhorro" aria-hidden="true">
+<div class="modal fade" id="autorizarAhorro{{ $solicitud->id }}" tabindex="-1" aria-labelledby="autorizarAhorro" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="{{ route('ahorro.update') }}" method="POST">

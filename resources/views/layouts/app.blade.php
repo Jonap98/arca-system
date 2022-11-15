@@ -9,7 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Caja de ahorro GM</title>
+    <title>Lorem</title>
+    {{-- <title>Caja de ahorro GM</title> --}}
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
@@ -21,8 +22,8 @@
         <div class="sidebar" id="side_nav">
             <div class="header-box px-3 pt-3 pb-4 d-flex justify-content-between">
                 <h1 class="fs-4">
-                    <img src="{{ asset('/assets/gm-white-logo.png') }}" alt="" width="50px" class="">
-                    <span class="text-white">Caja de ahorro</span>
+                    {{-- <img src="{{ asset('/assets/gm-white-logo.png') }}" alt="" width="50px" class=""> --}}
+                    <span class="text-white">Lorem</span>
                 </h1>
                 <button class="btn d-md-none d-block close-btn px-1 py-0 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-nested" viewBox="0 0 16 16">
@@ -56,6 +57,7 @@
                     </li>
                 @endrole
 
+                @role('arca')
                 <li class="id-2" class="btn">
                     <a href="{{ route('perfil-ahorrador') }}" class="text-decoration-none px-3 py-2 d-block">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge-fill" viewBox="0 0 16 16">
@@ -64,6 +66,18 @@
                         Perfil ahorrador
                     </a>
                 </li>
+                @endrole
+
+                @role('empleado')
+                <li class="id-2" class="btn">
+                    <a href="{{ route('perfil-ahorrador.details', Auth::user()->gmin) }}" class="text-decoration-none px-3 py-2 d-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge-fill" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
+                          </svg>
+                        Perfil ahorrador
+                    </a>
+                </li>
+                @endrole
 
                 <li class="id-3" class="btn">
                     <a href="{{ route('ahorro') }}" class="text-decoration-none px-3 py-2 d-block">
@@ -75,6 +89,7 @@
                     </a>
                 </li>
 
+            @role('empleado')
                 <li class="id-3" class="btn">
                     <a href="{{ route('solicitud-prestamo') }}" class="text-decoration-none px-3 py-2 d-block">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet-fill" viewBox="0 0 16 16">
@@ -84,6 +99,7 @@
                         Solicitud de préstamo
                     </a>
                 </li>
+            @endrole
                 
 
             </ul>
