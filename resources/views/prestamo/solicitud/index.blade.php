@@ -20,6 +20,11 @@
             </div>
             
             <hr class="mx-3">
+            @if (session('success'))
+                <div class="m-3 alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="m-4">
                 <form action="{{ route('solicitud-prestamo.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -163,21 +168,21 @@
                                 <div class="col-md-3">
                                     <div class="m-2">
                                         <label>Solicitud firmada</label>
-                                        <input type="file" id="solicitud_firmada" name="solicitud_firmada" class="form-control">
+                                        <input type="file" required id="solicitud_firmada" name="solicitud_firmada" class="form-control">
                                     </div>
                                 </div>
     
                                 <div class="col-md-3">
                                     <div class="m-2">
                                         <label>Identificación</label>
-                                        <input type="file" id="identificacion" name="identificacion" class="form-control">
+                                        <input type="file" required id="identificacion" name="identificacion" class="form-control">
                                     </div>
                                 </div>
     
                                 <div class="col-md-3">
                                     <div class="m-2">
                                         <label>Comprobante de domicilio</label>
-                                        <input type="file" id="comprobante_domicilio" name="comprobante_domicilio" class="form-control">
+                                        <input type="file" required id="comprobante_domicilio" name="comprobante_domicilio" class="form-control">
                                     </div>
                                 </div>
     
