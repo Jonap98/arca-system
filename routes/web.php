@@ -14,6 +14,7 @@ use App\Http\Controllers\catalogs\PlantasController;
 use App\Http\Controllers\PerfilAhorradorController;
 use App\Http\Controllers\AhorroController;
 use App\Http\Controllers\DetallesAhorroController;
+use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\SolicitudPrestamoController;
 
 
@@ -93,8 +94,10 @@ Route::group(['middleware' => ['auth']], function() {
     // Prestamo
     // ==================================================
     // Solicitud de préstamo
+    Route::get('prestamo', [PrestamoController::class, 'index'])->name('prestamo');
     Route::get('solicitud-de-prestamo', [SolicitudPrestamoController::class, 'index'])->name('solicitud-prestamo');
     Route::post('solicitud-de-prestamo/store', [SolicitudPrestamoController::class, 'store'])->name('solicitud-prestamo.store');
+    Route::post('solicitud-de-prestamo/download', [PrestamoController::class, 'download'])->name('solicitud-prestamo.download');
 
 });
 

@@ -41,7 +41,6 @@
                             <div class="mt-2 table-responsive">
                                 <table class="table table-striped" id="tableUsers">
                                     <thead style="background-color: #10375f; color: #fff">
-                                        <th>Folio</th>
                                         <th>Gmin</th>
                                         <th>Nombre</th>
                                         <th>Apellido</th>
@@ -51,27 +50,35 @@
                                     </thead>
                                     @foreach ($solicitudes as $solicitud)
                                         <tr>
-                                            <td>{{ $solicitud->folio }}</td>
                                             <td>{{ $solicitud->gmin_solicitante }}</td>
                                             <td>{{ $solicitud->nombres }}</td>
                                             <td>{{ $solicitud->paterno }}</td>
-                                            <td>{{ $solicitud->monto_semanal }}</td>
+                                            <td>{{ $solicitud->monto }}</td>
                                             <td style="background-color:{{ $solicitud->color }}; color: #fff;" >{{ $solicitud->status }}</td>
                                             <td>  
                                                 <div class="dropdown">
                                                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                                       Acciones
                                                     </button>
+                                                    @role('arca')
+                                                    <form method="POST" action="{{ route('solicitud-prestamo.download') }}">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $solicitud->id }}">
+                                                        <button type="submit" class="btn btn-primary">
+                                                            Descargar documentos
+                                                        </button>
+                                                    </form>
+                                                    @endrole
                                                     <div class="dropdown-menu">
                                                         @role('arca')
                                                             {{-- <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#modalAjuste{{ $conteo->Id }}" onclick="enviarAccion({{ $conteo->Id }}, 'AjustePositivo')"> --}}
-                                                            <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#autorizarAhorro{{ $solicitud->id }}">
+                                                            <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#autorizarPrestamo{{ $solicitud->id }}">
                                                                 Autorizar
                                                             </button>
                                                             <button type="button" class="btn dropdown-item">
                                                                 Revisar
                                                             </button>
-                                                            <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#rechazarAhorro{{ $solicitud->id }}">
+                                                            <button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#rechazarPrestamo{{ $solicitud->id }}">
                                                                 Rechazar
                                                             </button>
                                                         @endrole
@@ -84,8 +91,8 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        @include('ahorro.autorizar')
-                                        @include('ahorro.rechazar')
+                                        @include('prestamo.autorizar')
+                                        @include('prestamo.rechazar')
                                         {{-- @include('ahorro.detalles_ahorro.edit') --}}
 
                                     @endforeach
