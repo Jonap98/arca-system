@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\catalogs\TipoPrestamo;
 use App\Models\PerfilAhorrador;
 use App\Models\Prestamo;
+use App\Models\DetallePrestamo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -86,5 +87,34 @@ class SolicitudPrestamoController extends Controller
         //     if()
         // }
         // if($request-)
+    }
+
+    public function autorizar(Request $request) {
+        // Request:
+        // - Plazo
+        // - folio
+        // - monto
+
+        dd($request);
+
+        for ($index = 0; $index <= $request->plazo; $index++) { 
+            $detalle_prestamo = new DetallePrestamo();
+            
+            $detalle_prestamo->folio = $request->folio;
+            $detalle_prestamo->abono = $request->abono;
+            $detalle_prestamo->numero_de_pago = $index+1;
+            $detalle_prestamo->status_pago = 'PENDIENTE';
+            $detalle_prestamo->saldo_total = $request->pago_total;
+            $detalle_prestamo->saldo_restante = $request->pago_total;
+            $detalle_prestamo->gmin_solicitante = $request->gmin;
+    
+            $detalle_prestamo->save();
+        }   
+        
+    
+        Ahorro::where(['gmin_solicitante' => $request->gmin, 'folio' => $request->folio])->update(['status' => 'AUTORIZADO']);
+
+
+        $detalle = new Prestamo();
     }
 }

@@ -9,8 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lorem</title>
-    {{-- <title>Caja de ahorro GM</title> --}}
+    {{-- <title>Lorem</title> --}}
+    <title>Caja de ahorro GM</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
@@ -22,8 +22,8 @@
         <div class="sidebar" id="side_nav">
             <div class="header-box px-3 pt-3 pb-4 d-flex justify-content-between">
                 <h1 class="fs-4">
-                    {{-- <img src="{{ asset('/assets/gm-white-logo.png') }}" alt="" width="50px" class=""> --}}
-                    <span class="text-white">Lorem</span>
+                    <img src="{{ asset('/assets/gm-white-logo.png') }}" alt="" width="50px" class="">
+                    <span class="text-white">Caja de ahorro</span>
                 </h1>
                 <button class="btn d-md-none d-block close-btn px-1 py-0 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-nested" viewBox="0 0 16 16">

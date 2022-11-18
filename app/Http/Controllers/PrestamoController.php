@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Prestamo;
 use Carbon\Carbon;
 
 class PrestamoController extends Controller
@@ -27,6 +30,7 @@ class PrestamoController extends Controller
         if(Auth::user()->rol == 'ARCA') {
             $solicitudes = DB::table('solicitudes_prestamo')
             ->leftJoin('ahorrador', 'solicitudes_prestamo.gmin_solicitante', '=', 'ahorrador.gmin')
+            ->leftJoin('tipo_prestamo', 'solicitudes_prestamo.tipo_prestamo', '=', 'tipo_prestamo.id')
             ->select(
                 'solicitudes_prestamo.id',
                 'solicitudes_prestamo.gmin_solicitante',
@@ -34,13 +38,20 @@ class PrestamoController extends Controller
                 'solicitudes_prestamo.monto',
                 'solicitudes_prestamo.pago_total',
                 'solicitudes_prestamo.status',
+                'solicitudes_prestamo.archivo_solicitud',
+                'solicitudes_prestamo.archivo_identificacion',
+                'solicitudes_prestamo.archivo_comprobante_domicilio',
                 'ahorrador.nombres',
                 'ahorrador.paterno',
+                'tipo_prestamo.tipo_prestamo',
+                'tipo_prestamo.tasa_interes',
+                'tipo_prestamo.unidad_maxima_pago',
             )->get();
         }
         if(Auth::user()->rol == 'EMPLEADO') {
             $solicitudes = DB::table('solicitudes_prestamo')
             ->leftJoin('ahorrador', 'solicitudes_prestamo.gmin_solicitante', '=', 'ahorrador.gmin')
+            ->leftJoin('tipo_prestamo', 'solicitudes_prestamo.tipo_prestamo', '=', 'tipo_prestamo.id')
             ->select(
                 'solicitudes_prestamo.id',
                 'solicitudes_prestamo.gmin_solicitante',
@@ -48,8 +59,14 @@ class PrestamoController extends Controller
                 'solicitudes_prestamo.monto',
                 'solicitudes_prestamo.pago_total',
                 'solicitudes_prestamo.status',
+                'solicitudes_prestamo.archivo_solicitud',
+                'solicitudes_prestamo.archivo_identificacion',
+                'solicitudes_prestamo.archivo_comprobante_domicilio',
                 'ahorrador.nombres',
                 'ahorrador.paterno',
+                'tipo_prestamo.tipo_prestamo',
+                'tipo_prestamo.tasa_interes',
+                'tipo_prestamo.unidad_maxima_pago',
             )
             ->where('solicitudes_prestamo.gmin_solicitante', Auth::user()->gmin)
             ->get();
@@ -145,20 +162,30 @@ class PrestamoController extends Controller
     }
 
     public function download(Request $request) {
-        $documents = Prestamo::where('id', $id)->first();
+        // dd($request);
 
-        return response([
-            'data' => $documents
-        ]);
+        $documents = Prestamo::where('id', $request->id)->first();
+
+        // return response([
+        //     'data' => $documents
+        // ]);
 
         // $file= public_path(). "/download/info.pdf";
-        $file= public_path(). $documents->archivo_solicitud;
+        // $file= public_path(). $documents->archivo_solicitud;
+        $file = $documents->archivo_solicitud;
+
+        // return response([
+        //     'data' => $documents->archivo_solicitud,
+        //     'file' => $file
+        // ]);
 
         $headers = array(
                 'Content-Type: application/pdf',
                 );
 
-        return Response::download($file, 'filename.pdf', $headers);
+        return response()->download(($file), $headers);
+
+        // return Response::download($file, 'filename.pdf', $headers);
 
     }
 }

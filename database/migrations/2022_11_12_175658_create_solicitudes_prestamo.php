@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('solicitudes_prestamo', function (Blueprint $table) {
             $table->id();
+            $table->integer('folio')->nullable();
             $table->string('gmin_solicitante');
             $table->integer('tipo_prestamo');
             $table->float('monto');

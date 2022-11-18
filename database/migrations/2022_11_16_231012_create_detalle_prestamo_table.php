@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('detalle_prestamo', function (Blueprint $table) {
             $table->id();
             $table->integer('folio');
-            $table->float('pago_semanal');
-            $table->integer('semana');
+            $table->float('abono');
+            $table->integer('numero_de_pago');
+            $table->float('status_pago');
+            $table->float('saldo_total');
+            $table->float('saldo_restante');
             $table->string('gmin_solicitante');
             $table->timestamps();
         });

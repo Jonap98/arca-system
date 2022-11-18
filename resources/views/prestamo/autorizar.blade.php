@@ -1,7 +1,7 @@
 <div class="modal fade" id="autorizarPrestamo{{ $solicitud->id }}" tabindex="-1" aria-labelledby="autorizarPrestamo" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{ route('ahorro.update') }}" method="POST">
+            <form action="{{ route('solicitud-prestamo.autorizar') }}" method="POST">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="autorizarPrestamo">Autorizar solicitud</h5>
