@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('folio');
             $table->float('abono');
             $table->integer('numero_de_pago');
-            $table->float('status_pago');
+            $table->bool('status_pago');
             $table->float('saldo_total');
             $table->float('saldo_restante');
             $table->string('gmin_solicitante');

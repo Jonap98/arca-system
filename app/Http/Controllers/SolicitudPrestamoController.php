@@ -95,16 +95,31 @@ class SolicitudPrestamoController extends Controller
         // - folio
         // - monto
 
-        dd($request);
+        // dd($request);
+        $ultimoFolio = DetallePrestamo::select('folio')->orderBy('id', 'desc')->first();
+        // return response([
+        //     'data' => $ultimoFolio
+        // ]);
+        
+        // Si NO hay registros, se le asigna un 0 al folio
+        if(!$ultimoFolio) {
+            $folio = 0;
+        } else {
+            $folio = $ultimoFolio->folio;
+        }
 
-        for ($index = 0; $index <= $request->plazo; $index++) { 
+        for ($index = 0; $index <= $request->plazo - 1; $index++) { 
             $detalle_prestamo = new DetallePrestamo();
             
-            $detalle_prestamo->folio = $request->folio;
+            $detalle_prestamo->folio = $folio + 1;
             $detalle_prestamo->abono = $request->abono;
+
             $detalle_prestamo->numero_de_pago = $index+1;
+
             $detalle_prestamo->status_pago = 'PENDIENTE';
+
             $detalle_prestamo->saldo_total = $request->pago_total;
+
             $detalle_prestamo->saldo_restante = $request->pago_total;
             $detalle_prestamo->gmin_solicitante = $request->gmin;
     
@@ -112,9 +127,11 @@ class SolicitudPrestamoController extends Controller
         }   
         
     
-        Ahorro::where(['gmin_solicitante' => $request->gmin, 'folio' => $request->folio])->update(['status' => 'AUTORIZADO']);
+        Prestamo::where(['id' => $request->id_solicitud])->update(['status' => 'AUTORIZADO']);
 
 
-        $detalle = new Prestamo();
+        // $detalle = new Prestamo();
+
+        return back()->with('success', 'El préstamo fue autorizado exitosamente');
     }
 }

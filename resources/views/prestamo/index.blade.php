@@ -22,7 +22,7 @@
             <div class="m-4">
                 <div class="row">
                     @if (session('success'))
-                        <div class="alert alert-primary mt-2" role="alert">
+                        <div class="alert alert-success mt-2" role="alert">
                             {{ session('success') }}
                         </div>
                     @endif
@@ -129,8 +129,10 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                        @include('prestamo.autorizar')
-                                        @include('prestamo.rechazar')
+                                        @role('arca')
+                                            @include('prestamo.autorizar')
+                                            @include('prestamo.rechazar')
+                                        @endrole
                                         {{-- @include('ahorro.detalles_ahorro.edit') --}}
 
                                     @endforeach

@@ -97,7 +97,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('prestamo', [PrestamoController::class, 'index'])->name('prestamo');
     Route::get('solicitud-de-prestamo', [SolicitudPrestamoController::class, 'index'])->name('solicitud-prestamo');
     Route::post('solicitud-de-prestamo/store', [SolicitudPrestamoController::class, 'store'])->name('solicitud-prestamo.store');
-    Route::get('solicitud-de-prestamo/autorizar', [SolicitudPrestamoController::class, 'autorizar'])->name('solicitud-prestamo.autorizar');
+    Route::post('solicitud-de-prestamo/autorizar', [SolicitudPrestamoController::class, 'autorizar'])->name('solicitud-prestamo.autorizar');
     Route::post('solicitud-de-prestamo/download', [PrestamoController::class, 'download'])->name('solicitud-prestamo.download');
 
 });

@@ -31,6 +31,7 @@ class PrestamoController extends Controller
             $solicitudes = DB::table('solicitudes_prestamo')
             ->leftJoin('ahorrador', 'solicitudes_prestamo.gmin_solicitante', '=', 'ahorrador.gmin')
             ->leftJoin('tipo_prestamo', 'solicitudes_prestamo.tipo_prestamo', '=', 'tipo_prestamo.id')
+            ->leftJoin('periocidad', 'tipo_prestamo.periocidad', '=', 'periocidad.id')
             ->select(
                 'solicitudes_prestamo.id',
                 'solicitudes_prestamo.gmin_solicitante',
@@ -43,9 +44,11 @@ class PrestamoController extends Controller
                 'solicitudes_prestamo.archivo_comprobante_domicilio',
                 'ahorrador.nombres',
                 'ahorrador.paterno',
+                'tipo_prestamo.periocidad as periodo',
                 'tipo_prestamo.tipo_prestamo',
                 'tipo_prestamo.tasa_interes',
                 'tipo_prestamo.unidad_maxima_pago',
+                'periocidad.periodo as plazo'
             )->get();
         }
         if(Auth::user()->rol == 'EMPLEADO') {
@@ -64,6 +67,7 @@ class PrestamoController extends Controller
                 'solicitudes_prestamo.archivo_comprobante_domicilio',
                 'ahorrador.nombres',
                 'ahorrador.paterno',
+                'tipo_prestamo.periocidad as periodo',
                 'tipo_prestamo.tipo_prestamo',
                 'tipo_prestamo.tasa_interes',
                 'tipo_prestamo.unidad_maxima_pago',
